@@ -85,12 +85,12 @@ void insert_ordered(struct lst_t *L, void *datum, bool (*ptrFct)())
         printf("Vide\n");
         cons(L, datum);
     }
-    else if (datum < L->head->datum)//ptrFct
+    else if ((*ptrFct)(datum,L->head->datum))
     {
         printf("Tete\n");
         cons(L, datum);
     }
-    else if (datum > L->tail->datum)
+    else if ((*ptrFct)(L->tail->datum , datum))
     {
         printf("Queue\n");
         insert_after(L, datum, L->tail);
